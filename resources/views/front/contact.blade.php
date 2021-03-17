@@ -28,7 +28,7 @@
                         </li>
                         <li class="mb-3">
                             <strong class="d-block mb-1">Phone</strong>
-                            <span>+91 8200242382</span>
+                            <span>+91 8200242382</span><br>
                             <span>+91 8000080272</span>
                         </li>
                         <li class="mb-3">
@@ -38,7 +38,7 @@
                     </ul>
                 </div>
                 <div class="col-md-6 mb-5 mb-md-0" data-aos="fade-up">
-                    <form action="{{ route('contact_us') }}" method="post" role="form" class="php-email-form">
+                    <form action="{{ route('contact_store') }}" method="post" role="form" class="php-email-form">
                         @csrf
                         <div class="row">
                             <div class="col-md-6 form-group">
