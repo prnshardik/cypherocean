@@ -13,3 +13,17 @@ Route::group(['namespace' => 'Front'], function(){
     Route::get('contact', 'MainController@contact')->name('contact');
     Route::post('contact_us', 'MainController@contact_us')->name('contact_us');
 });
+
+Route::group(['middleware' => 'prevent-back-history', 'namespace' => 'Admin', 'as' => 'admin.', 'prefix' => 'admin'], function(){
+    Route::group(['middleware' => ['guest']], function () {
+        Route::get('/', 'AuthController@login')->name('login');
+        Route::post('signin', 'AuthController@signin')->name('signin');
+    });
+
+    Route::group(['middleware' => ['auth']], function () {
+        Route::get('logout', 'AuthController@logout')->name('logout');
+
+        Route::get('home', 'HomeController@index')->name('home');
+        Route::get('page', 'HomeController@page')->name('page');
+    });
+});
