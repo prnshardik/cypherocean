@@ -22,7 +22,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4 mb-4 mb-md-0">
-                <h3>About CypherOcean</h3>
+                <h3>About {{ _site_title() }}</h3>
                 <p>Trusted fully managed dedicated software development teams in India, we deliver world-class custom software development projects on demand for our clients worldwide.</p>
                 <p class="social">
                     <a href="https://www.facebook.com/cypherocean"><span class="icofont-facebook"></span></a>
@@ -56,7 +56,7 @@
         </div>
         <div class="row justify-content-center text-center">
             <div class="col-md-7">
-                <p class="copyright">&copy; Copyright CypherOcean. All Rights Reserved</p>
+                <p class="copyright">&copy; Copyright {{ _site_title() }}. All Rights Reserved</p>
             </div>
         </div>
      </div>

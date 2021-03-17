@@ -4,7 +4,7 @@
 <head>
     @include('front.layout.meta')
 
-    <title>CypherOcean - @yield('title')</title>
+    <title>{{ _site_title() }} - @yield('title')</title>
 
     <link href="{{ asset('images/fevicon.png') }}" rel="icon">
 
