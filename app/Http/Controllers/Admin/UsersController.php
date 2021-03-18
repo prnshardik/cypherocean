@@ -65,7 +65,78 @@
             return view('back.users.index');
         }
 
-        public function page(Request $request){
-            return view('back.page');
+
+        public function edit(Request $request){
+            $id = base64_decode($request->id);
+            if(isset($id) && $id != '' || $id != null){
+                $user = DB::table('users')->where('id' ,$id)->first();
+                return view('back.users.edit')->with('users',$user);
+            }
+        }
+
+        public function update(Request $request){
+            $id = $request->id;
+            if(isset($id) && $id != '' || $id != null){
+                 $crud = [
+                    'firstname' => $request->firstname,
+                    'lastname' => $request->lastname,
+                    'email' => $request->email
+                ];
+                $update = DB::table('users')->where(['id' => $id])->update($crud);
+                return redirect('admin/users')->with('Success','Reacord Status Change Successfully');
+            }
+                return redirect('admin/users')->with('Error','Faild To Change Reacord Status');
+        }
+
+        public function view(Request $request){
+            $id = base64_decode($request->id);
+            if(isset($id) && $id != '' || $id != null){
+                $user = DB::table('users')->where('id' ,$id)->first();
+                return view('back.users.view')->with('users',$user);
+            }
+        }
+
+         public function change_status(Request $request){
+            if(!$request->ajax()){ exit('No direct script access allowed'); }
+
+            if(!empty($request->all())){
+                $id = base64_decode($request->id);
+                $status = $request->status;
+
+                $users = DB::table('users')->where(['id' => $id])->first();
+
+                if(!empty($users)){
+                    DB::beginTransaction();
+                    try {
+                        if($status != 'deleted'){
+                            $update = DB::table('users')->where(['id' => $id])->update(['status' => $status, 'updated_by' => auth()->user()->id]);
+
+                            if($update){
+                                DB::commit();
+                                return response()->json(['code' => 200]);
+                            }else{
+                                DB::rollback();
+                                return response()->json(['code' => 201]);
+                            }
+                        }else{
+                            $delete = DB::table('users')->where('id',$id)->delete();
+                            if($delete){
+                                DB::commit();
+                                return response()->json(['code' => 200]);
+                            }else{
+                                DB::rollback();
+                                return response()->json(['code' => 201]);
+                            }
+                        }
+                    } catch (\Throwable $th) {
+                        DB::rollback();
+                        return response()->json(['code' => 201]);
+                    }
+                }else{
+                    return response()->json(['code' => 201]);
+                }
+            }else{
+                return response()->json(['code' => 201]);
+            }
         }
     }

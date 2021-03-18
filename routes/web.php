@@ -30,9 +30,10 @@ Route::group(['middleware' => 'prevent-back-history', 'namespace' => 'Admin', 'a
         
         //-- User --//
             Route::any('users', 'UsersController@index')->name('users');
-            Route::any('users-view', 'UsersController@view')->name('users.view');
-            Route::any('usres-edit', 'UsersController@edit')->name('users.edit');
-            Route::any('usres-status', 'UsersController@change_status')->name('users.change.status');
+            Route::any('users/view', 'UsersController@view')->name('users.view');
+            Route::any('users-edit', 'UsersController@edit')->name('users.edit');
+            Route::post('users-update', 'UsersController@update')->name('users.update');
+            Route::any('users-status', 'UsersController@change_status')->name('users.change.status');
         //-- User --//
 
         //-- Notification --//
@@ -41,5 +42,13 @@ Route::group(['middleware' => 'prevent-back-history', 'namespace' => 'Admin', 'a
             Route::post('notification-status', 'NotificationController@status')->name('notification.status');
             Route::any('notification-delete', 'NotificationController@delete')->name('notification.delete');
         //-- Notification --//
+
+        //-- Review --//
+            Route::any('review', 'ReviewController@index')->name('review');
+            Route::get('review-view', 'ReviewController@view')->name('review.view');
+            Route::post('review-update', 'ReviewController@update')->name('review.update');
+            Route::post('review-status', 'ReviewController@status')->name('review.status');
+            Route::any('review-delete', 'ReviewController@delete')->name('review.delete');
+        //-- Review --//
     });
 });

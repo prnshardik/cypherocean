@@ -20,7 +20,7 @@
                                                 <i class="fa fa-eye"></i>
                                             </a> &nbsp;
 
-                                            <a href="'.route('admin.notification.delete', ['id' => base64_encode($data->id)]).'" class="btn btn-default btn-xs">
+                                            <a class="btn btn-default btn-xs delete" onclick="change_status(this);" data-id="'.base64_encode($data->id).'">
                                                 <i class="fa fa-trash"></i>
                                             </a> &nbsp;
                                            </div>';
@@ -61,5 +61,18 @@
                 return redirect('admin/notification')->with('Success','Reacord Status Change Successfully');
             }
                 return redirect('admin/notification')->with('Error','Faild To Change Reacord Status');
+        }
+
+        public function delete(Request $request){
+            if(!$request->ajax()){ exit('No direct script access allowed'); }
+            $id = base64_decode($request->id);
+            if(isset($id) && $id != '' || $id != null){
+                $notification = DB::table('contact_us')->where('id',$id)->delete();
+                if($notification){
+                    return response()->json(['code' => 200]);
+                }else{
+                    return response()->json(['code' => 201]);
+                }
+            }
         }
     }

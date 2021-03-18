@@ -4,20 +4,68 @@
 @endsection
 
 @section('title')
-    Notification
+    Review
 @endsection
 
 @section('styles')
+    <style>
+         #full_stars_example_two{
+        }
+        .rating-group{
+          display: inline-flex;
+        }
+        
+        /* make hover effect work properly in IE */
+        .rating__icon {
+          pointer-events: none;
+        }
+        
+        /* hide radio inputs */
+        .rating__input {
+         position: absolute !important;
+         left: -9999px !important;
+        }
+        
+        
+
+        /* set icon padding and size */
+        .rating__label {
+          cursor: pointer;
+          padding: 0 0.1em;
+          font-size: 2rem;
+        }
+        
+        /* set default star color */
+        .rating__icon--star {
+          color: orange;
+        }
+
+        /* if any input is checked, make its following siblings grey */
+        .rating__input:checked ~ .rating__label .rating__icon--star {
+          color: #ddd;
+        }
+        
+        /* make all stars orange on rating group hover */
+        .rating-group:hover .rating__label .rating__icon--star {
+          color: orange;
+        }
+
+        /* make hovered input's following siblings grey on hover */
+        .rating__input:hover ~ .rating__label .rating__icon--star {
+          color: #ddd;
+        }
+      }
+    </style>
 @endsection
 
 @section('content')
     <div class="page-heading">
-        <h1 class="page-title">Notification</h1>
+        <h1 class="page-title">Review</h1>
         <ol class="breadcrumb">
             <li class="breadcrumb-item">
                 <a href="{{ route('admin.home') }}"><i class="fa fa-home font-20"></i></a>
             </li>
-            <li class="breadcrumb-item">Notification</li>
+            <li class="breadcrumb-item">Review</li>
         </ol>
     </div>
     <div class="page-content fade-in-up">
@@ -25,7 +73,7 @@
             <div class="col-md-12">
                 <div class="ibox">
                     <div class="ibox-head">
-                        <div class="ibox-title">Notification List</div>
+                        <div class="ibox-title">Review List</div>
                         <div class="ibox-tools">
                             <a class="ibox-collapse"><i class="fa fa-minus"></i></a>                            
                         </div>
@@ -38,7 +86,7 @@
                                         <th>No</th>
                                         <th>Name</th>
                                         <th>Email</th>
-                                        <th>Subject</th>
+                                        <th>Stars</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -81,7 +129,7 @@
                     // lengthChange: false,
 
                     "ajax":{
-                        "url": "{{ route('admin.notification') }}",
+                        "url": "{{ route('admin.review') }}",
                         "type": "POST",
                         "dataType": "json",
                         "data":{
@@ -107,8 +155,8 @@
                             name: 'email'
                         },
                         {
-                            data: 'subject',
-                            name: 'subject'
+                            data: 'star',
+                            name: 'star'
                         },
                         {
                             data: 'status',
@@ -126,10 +174,36 @@
 
         function change_status(object){
             var id = $(object).data("id");
+            var status = $(object).data("status");
 
-            if (confirm('Are you sure You Want To Delete This Record?')) {
+            if (confirm('Are you sure?')) {
                 $.ajax({
-                    "url": "{!! route('admin.notification.delete') !!}",
+                    "url": "{!! route('admin.review.status') !!}",
+                    "dataType": "json",
+                    "type": "POST",
+                    "data":{
+                        id: id,
+                        status: status,
+                        _token: "{{ csrf_token() }}"
+                    },
+                    success: function (response){
+                        if (response.code == 200){
+                            datatable.ajax.reload();
+                            toastr.success('Record status changed successfully.', 'Success');
+                        }else{
+                            toastr.error('Failed to change status of record.', 'Error');
+                        }
+                    }
+                });
+            }
+        }
+
+        function delete_record(object){
+            var id = $(object).data("id");
+
+            if (confirm('Are you sure?')) {
+                $.ajax({
+                    "url": "{!! route('admin.review.delete') !!}",
                     "dataType": "json",
                     "type": "POST",
                     "data":{
@@ -139,7 +213,7 @@
                     success: function (response){
                         if (response.code == 200){
                             datatable.ajax.reload();
-                            toastr.success('Record status changed successfully.', 'Success');
+                            toastr.success('Record deleted successfully.', 'Success');
                         }else{
                             toastr.error('Failed to delete record.', 'Error');
                         }

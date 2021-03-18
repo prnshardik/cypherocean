@@ -9,23 +9,30 @@
             </div>
         </div>
         <ul class="side-menu metismenu">
-            <li>
-                <a class="{{ Request::is('admin/dashboard*') ? 'active' : '' }}" href="{{ route('admin.home') }}"><i class="sidebar-item-icon fa fa-th-large"></i>
+            <li class="{{ Request::is('admin/dashboard*') ? 'active' : '' }}">
+                <a href="{{ route('admin.home') }}"><i class="sidebar-item-icon fa fa-th-large"></i>
                     <span class="nav-label">Dashboard</span>
                 </a>
             </li>
 
-            <li>
-                <a class="{{ Request::is('admin/users*') ? 'active' : '' }}" href="{{ route('admin.users') }}"><i class="sidebar-item-icon fa fa-th-large"></i>
+            <li class="{{ Request::is('admin/users*') ? 'active' : '' }}">
+                <a class="{{ Request::is('admin/users*') ? 'active' : '' }}" href="{{ route('admin.users') }}"><i class="sidebar-item-icon fa fa-users"></i>
                     <span class="nav-label">Users</span>
                 </a>
             </li>
 
-            <li>
-                <a class="{{ Request::is('admin/notification*') ? 'active' : '' }}" href="{{ route('admin.notification') }}"><i class="sidebar-item-icon fa fa-th-large"></i>
+            <li class="{{ Request::is('admin/notification*') ? 'active' : '' }}">
+                <a class="{{ Request::is('admin/notification*') ? 'active' : '' }}" href="{{ route('admin.notification') }}"><i class="sidebar-item-icon fa fa-bell"></i>
                     <span class="nav-label">Notification</span>
                 </a>
             </li>
+
+            <li class="{{ Request::is('admin/review*') ? 'active' : '' }}">
+                <a class="{{ Request::is('admin/review*') ? 'active' : '' }}" href="{{ route('admin.review') }}"><i class="sidebar-item-icon fa fa-star"></i>
+                    <span class="nav-label">Review</span>
+                </a>
+            </li>
+
         </ul>
     </div>
 </nav>

@@ -92,7 +92,7 @@
                 'created_at' => Date('Y-m-d H:i:s'),
                 'updated_at' => Date('Y-m-d H:i:s')
             ];
-            $user = DB::table('rating')->insert($input);
+            $user = DB::table('review')->insert($input);
             if($user){
                 return redirect()->back()->with('Success' ,'Your Review Submited Successfully'); 
             }else{
