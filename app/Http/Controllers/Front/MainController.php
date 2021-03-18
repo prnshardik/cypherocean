@@ -4,6 +4,7 @@
 
     use App\Http\Controllers\Controller;
     use Illuminate\Http\Request;
+    use App\Http\Requests\RatingRequest;
     use Illuminate\Support\Facades\Validator;
     use DB;
 
@@ -72,32 +73,22 @@
             }
         }
 
-        public function review_store(Request $request){
-            $rules = [
-                'name' => 'required',
-                'email' => 'required',
-                'rating3' => 'required',
-                'feedback' => 'required'
-            ];
-            $validator = Validator::make($request->all(),$rules);
-
-            if($validator->fails()){
-                return response()->json(['success' => false, 'status' => 200, 'message' => $validator->errors()->first()]);
-            }
+        public function review_store(RatingRequest $request){
+            if($request->ajax()){ return true; }
 
             $input = [
                 'name' => $request->name,
                 'email' => $request->email,
-                'star' => $request->rating3,
+                'star' => $request->rating,
                 'feedback' => $request->feedback,
                 'created_at' => Date('Y-m-d H:i:s'),
                 'updated_at' => Date('Y-m-d H:i:s')
             ];
-            $user = DB::table('review')->insert($input);
-            if($user){
-                return redirect()->back()->with('Success' ,'Your Review Submited Successfully'); 
-            }else{
-                return redirect()->back()->with('Error' ,'Faild To Submit Your Review');
-            }
+
+            $data = DB::table('review')->insert($input);
+            if($data)
+                return redirect()->back()->with('success', 'Your Review Submited Successfully'); 
+            else
+                return redirect()->back()->with('error', 'Faild To Submit Your Review');
         }
     }

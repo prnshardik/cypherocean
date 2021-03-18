@@ -1,51 +1,54 @@
 <section class="section cta-section">
-      <div class="container">
+    <div class="container">
         <div class="row align-items-center">
-          <form action="{{ route('review_store') }}" method="post" style="width:100%" accept-charset="utf-8">
-            @csrf
-            <div class="col-md-12 mr-auto text-center text-md-left mb-5 mb-md-0">
-              <h2>Rate And Review</h2>
-            </div>
-            <div class="row">
-                
-              <div class="form-group col-md-5">
-                <label for="name">Name:</label>
-                <input type="name" class="form-control" name="name" placeholder="Enter your Name">
-              </div>
-              <div class="form-group col-md-5">
-                <label for="email">Email:</label>
-                <input type="email" class="form-control" name="email" placeholder="Enter your Email">
-              </div>
-              <div class="form-group col-md-5 rate">
-                <label for="rating">Star:</label>
-                <div id="full_stars_example_two">
-                    <div class="rating-group">
-                      <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                      <input class="rating__input" name="rating3" id="rating3-1" value="1" type="radio">
-                      <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                      <input class="rating__input" name="rating3" id="rating3-2" value="2" type="radio">
-                      <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                      <input class="rating__input" name="rating3" id="rating3-3" value="3" type="radio">
-                      <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                      <input class="rating__input" name="rating3" id="rating3-4" value="4" type="radio">
-                      <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
-                      <input class="rating__input" name="rating3" id="rating3-5" value="5" type="radio">
-                  </div>
-                </div>
-              </div>
-              <div class="form-group col-md-5">
-                <label for="feedback">Feedback:</label>
-                <textarea class="form-control" name="feedback" placeholder="Enter your Feedback"></textarea>
-              </div>
-            </div>
+            <form id="review_store" action="{{ route('review_store') }}" method="post" style="width:100%" accept-charset="utf-8">
+                @csrf
 
-             <div class="form-group col-md-12 text-right">
-              <input type="submit" class="btn btn-primary d-block w-10" value="Submit">
-            </div>
-          </form>
+                <div class="col-sm-12 mr-auto text-center text-md-left mb-5 mb-md-0">
+                    <h2>Rate And Review</h2>
+                </div>
+                <div class="row">
+                    <div class="form-group col-sm-6">
+                        <label for="name">Name:</label>
+                        <input type="name" class="form-control" name="name" placeholder="Enter your Name">
+                        <span class="kt-form__help error name"></span>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" name="email" placeholder="Enter your Email">
+                        <span class="kt-form__help error email"></span>
+                    </div>
+                    <div class="form-group col-sm-6 rate">
+                        <label for="rating">Star:</label>
+                        <div id="full_stars_example_two">
+                            <div class="rating-group">
+                                <label aria-label="1 star" class="rating__label" for="rating-1"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                <input class="rating__input" name="rating" id="rating-1" value="1" type="radio">
+                                <label aria-label="2 stars" class="rating__label" for="rating-2"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                <input class="rating__input" name="rating" id="rating-2" value="2" type="radio">
+                                <label aria-label="3 stars" class="rating__label" for="rating-3"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                <input class="rating__input" name="rating" id="rating-3" value="3" type="radio">
+                                <label aria-label="4 stars" class="rating__label" for="rating-4"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                <input class="rating__input" name="rating" id="rating-4" value="4" type="radio">
+                                <label aria-label="5 stars" class="rating__label" for="rating-5"><i class="rating__icon rating__icon--star fa fa-star"></i></label>
+                                <input class="rating__input" name="rating" id="rating-5" value="5" type="radio" checked="checked">
+                            </div>
+                            <span class="kt-form__help error rating"></span>
+                        </div>
+                    </div>
+                    <div class="form-group col-sm-6">
+                        <label for="feedback">Feedback:</label>
+                        <textarea class="form-control" name="feedback" placeholder="Enter your Feedback"></textarea>
+                        <span class="kt-form__help error feedback"></span>
+                    </div>
+                    <div class="form-group col-sm-12 text-right">
+                        <input type="submit" class="btn btn-primary d-block w-10" value="Submit">
+                    </div>
+                </div>
+            </form>
         </div>
-      </div>
-    </section>
+    </div>
+</section>
 
 <footer class="footer" role="contentinfo">
     <div class="container">
@@ -88,5 +91,5 @@
                 <p class="copyright">&copy; Copyright {{ _site_title() }}. All Rights Reserved</p>
             </div>
         </div>
-     </div>
- </footer>
+    </div>
+</footer>

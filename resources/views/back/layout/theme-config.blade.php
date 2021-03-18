@@ -3,7 +3,7 @@
         <i class="fa fa-cog theme-config-show"></i>
         <i class="ti-close theme-config-close"></i>
     </div>
-    <div class="theme-config-box">
+    <div class="theme-config-box" style="display:none;" >
         <div class="text-center font-18 m-b-20">SETTINGS</div>
         <div class="font-strong">LAYOUT OPTIONS</div>
         <div class="check-list m-b-20 m-t-10">

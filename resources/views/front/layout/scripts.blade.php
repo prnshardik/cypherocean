@@ -8,7 +8,7 @@
 
 <script src="{{ asset('front/js/main.js') }}"></script>
 
-<script src="{{ asset('front/vendors/toastr/toastr.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('front/vendor/toastr/toastr.min.js') }}" type="text/javascript"></script>
 
 <script>
     @php
@@ -27,6 +27,37 @@
     if(success != ''){ toastr.success(success, 'Success'); }
 
     if(error != ''){ toastr.error(error, 'error'); }
+</script>
+
+<script>
+    $(document).ready(function (e) {
+        var form = $('#review_store');
+        $('.kt-form__help').html('');
+        form.submit(function(e) {
+            $('.help-block').html('');
+            $('.m-form__help').html('');
+            $.ajax({
+                url : form.attr('action'),
+                type : form.attr('method'),
+                data : form.serialize(),
+                dataType: 'json',
+                async:false,
+                success : function(json){
+                    return true;
+                },
+                error: function(json){
+                    if(json.status === 422) {
+                        e.preventDefault();
+                        var errors_ = json.responseJSON;
+                        $('.kt-form__help').html('');
+                        $.each(errors_.errors, function (key, value) {
+                            $('.'+key).html(value);
+                        });
+                    }
+                }
+            });
+        });
+    });
 </script>
 
 @yield('scripts')
