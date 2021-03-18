@@ -28,5 +28,3 @@
         </div>
     </div>
 </header>
-
-@include('front.layout.hero')
