@@ -26,8 +26,7 @@ Route::group(['middleware' => 'prevent-back-history', 'namespace' => 'Admin', 'a
         Route::get('logout', 'AuthController@logout')->name('logout');
 
         Route::get('dashboard', 'HomeController@index')->name('home');
-        Route::get('page', 'HomeController@page')->name('page');
-        
+
         //-- User --//
             Route::any('users', 'UsersController@index')->name('users');
             Route::any('users/view', 'UsersController@view')->name('users.view');
@@ -50,5 +49,16 @@ Route::group(['middleware' => 'prevent-back-history', 'namespace' => 'Admin', 'a
             Route::post('review-status', 'ReviewController@status')->name('review.status');
             Route::any('review-delete', 'ReviewController@delete')->name('review.delete');
         //-- Review --//
+
+        //-- Portfolio --//
+            Route::any('portfolio', 'PortfolioController@index')->name('portfolio');
+            Route::get('portfolio/create', 'PortfolioController@create')->name('portfolio.create');
+            Route::post('portfolio/insert', 'PortfolioController@insert')->name('portfolio.insert');
+            Route::get('portfolio/view', 'PortfolioController@view')->name('portfolio.view');
+            Route::get('portfolio/edit', 'PortfolioController@edit')->name('portfolio.edit');
+            Route::patch('portfolio/update/{id?}', 'PortfolioController@update')->name('portfolio.update');
+            Route::post('portfolio/status', 'PortfolioController@status')->name('portfolio.status');
+            Route::post("portfolio/image-remove", "PortfolioController@image_remove")->name('portfolio.image.remove');
+        //-- Portfolio --//
     });
 });
