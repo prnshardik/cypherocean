@@ -120,7 +120,7 @@
                 <div class="col-md-4 mr-auto">
                     <h2 class="mb-4">Transparency</h2>
                     <p class="mb-4">Running a project with CypherOcean gives you full visibility into the process, and accurate time and cost reports at each incremental stage of development. Our focus is on clear communication to avoid surprises, and get things done faster.</p>
-                    <p><a href="#" class="btn btn-primary">Download Now</a></p>
+                    <p><a href="{{ route('about') }}" class="btn btn-primary">Learn More <i class="icofont-arrow-right"></i></a></p>
                 </div>
                 <div class="col-md-6" data-aos="fade-left">
                     <img src="{{ asset('front/img/undraw_svg_2.svg') }}" alt="Image" class="img-fluid">
@@ -135,7 +135,7 @@
                 <div class="col-md-4 ml-auto order-2">
                     <h2 class="mb-4">Dedication</h2>
                     <p class="mb-4">CypherOcean is client-focused, and motivated to help you succeed. From the biggest ideas to the smallest detail, we strive to improve, optimize, and innovate every aspect of your product for quality and performance.</p>
-                    <p><a href="#" class="btn btn-primary">Download Now</a></p>
+                    <p><a href="{{ route('about') }}" class="btn btn-primary">Learn More <i class="icofont-arrow-right"></i></a></p>
                 </div>
                 <div class="col-md-6" data-aos="fade-right">
                     <img src="{{ asset('front/img/undraw_svg_3.svg') }}" alt="Image" class="img-fluid">
