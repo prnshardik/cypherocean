@@ -123,62 +123,61 @@
             <div class="row justify-content-center text-center">
                 <div class="col-md-7">
                     <div class="owl-carousel testimonial-carousel">
-                        <div class="review text-center">
-                            <p class="stars">
-                                <span class="icofont-star"></span>
-                                <span class="icofont-star"></span>
-                                <span class="icofont-star"></span>
-                                <span class="icofont-star"></span>
-                                <span class="icofont-star muted"></span>
-                            </p>
-                            <h3>Excellent App!</h3>
-                            <blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius ea delectus pariatur, numquam aperiam dolore nam optio dolorem facilis itaque voluptatum recusandae deleniti minus animi, provident voluptates consectetur maiores quos.</p>
-                            </blockquote>
-                            <p class="review-user">
-                                <img src="{{ asset('front/img/person_1.jpg') }}" alt="Image" class="img-fluid rounded-circle mb-3">
-                                <span class="d-block">
-                                    <span class="text-black">Jean Doe</span>, &mdash; App User
-                                </span>
-                            </p>
-                        </div>
-                        <div class="review text-center">
-                            <p class="stars">
-                                <span class="icofont-star"></span>
-                                <span class="icofont-star"></span>
-                                <span class="icofont-star"></span>
-                                <span class="icofont-star"></span>
-                                <span class="icofont-star muted"></span>
-                            </p>
-                            <h3>This App is easy to use!</h3>
-                            <blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius ea delectus pariatur, numquam aperiam dolore nam optio dolorem facilis itaque voluptatum recusandae deleniti minus animi, provident voluptates consectetur maiores quos.</p>
-                            </blockquote>
-                            <p class="review-user">
-                                <img src="{{ asset('front/img/person_2.jpg') }}" alt="Image" class="img-fluid rounded-circle mb-3">
-                                <span class="d-block">
-                                    <span class="text-black">Johan Smith</span>, &mdash; App User
-                                </span>
-                            </p>
-                        </div>
-                        <div class="review text-center">
-                            <p class="stars">
-                                <span class="icofont-star"></span>
-                                <span class="icofont-star"></span>
-                                <span class="icofont-star"></span>
-                                <span class="icofont-star"></span>
-                                <span class="icofont-star muted"></span>
-                            </p>
-                            <h3>Awesome functionality!</h3>
-                            <blockquote>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius ea delectus pariatur, numquam aperiam dolore nam optio dolorem facilis itaque voluptatum recusandae deleniti minus animi, provident voluptates consectetur maiores quos.</p>
-                            </blockquote>
-                            <p class="review-user">
-                                <img src="{{ asset('front/img/person_3.jpg') }}" alt="Image" class="img-fluid rounded-circle mb-3">
-                                <span class="d-block">
-                                <span class="text-black">Jean Thunberg</span>, &mdash; App User</span>
-                            </p>
-                        </div>
+                        @foreach($review AS $row)
+                            <div class="review text-center">
+
+                                <div id="full_stars_example_two">
+                                    <div class="rating-group">
+                                      <label aria-label="1 star" class="rating__label" for="rating3-1"><i class="rating__icon rating__icon--star icofont-star icofont-sm"></i></label>
+                                      
+                                      <input class="rating__input" <?=($row->star == '1' ? 'checked' :'')?> name="rating3" id="rating3-1" value="1" type="radio">
+                                      
+
+                                      <label aria-label="2 stars" class="rating__label" for="rating3-2"><i class="rating__icon rating__icon--star icofont-star icofont-sm"></i></label>
+                                      
+                                      <input class="rating__input" <?=($row->star == '2' ? 'checked' :'')?> name="rating3" id="rating3-2" value="2" type="radio">
+                                      
+
+                                      <label aria-label="3 stars" class="rating__label" for="rating3-3"><i class="rating__icon rating__icon--star icofont-star icofont-sm"></i></label>
+                                      
+                                      <input class="rating__input" <?=($row->star == '3' ? 'checked' :'')?> name="rating3" id="rating3-3" value="3" type="radio">
+                                      
+
+                                      <label aria-label="4 stars" class="rating__label" for="rating3-4"><i class="rating__icon rating__icon--star icofont-star icofont-sm"></i></label>
+                                      
+                                      <input class="rating__input" <?=($row->star == '4' ? 'checked' :'')?> name="rating3" id="rating3-4" value="4" type="radio">
+                                      
+
+                                      <label aria-label="5 stars" class="rating__label" for="rating3-5"><i class="rating__icon rating__icon--star icofont-star icofont-sm"></i></label>
+
+                                      <input class="rating__input" <?=($row->star == '5' ? 'checked' :'')?> name="rating3" id="rating3-5" value="5" type="radio">
+
+                                  </div>
+                                </div>
+                                
+                                @if($row->star == '5')
+                                    <h3>Excellent !</h3>
+                                @elseif($row->star == '4')
+                                    <h3>Good !</h3>
+                                @elseif($row->star == '3')
+                                    <h3>Ok !</h3>
+                                @elseif($row->star == '2')
+                                    <h3>Bad !</h3>
+                                @else
+                                    <h3>Too Bad !</h3>
+                                @endif
+                                    <blockquote>
+                                        <p>{{ $row->feedback ??'-' }}</p>
+                                    </blockquote>
+                                    <p class="review-user">
+                                        <img src="{{ asset('front/img/avatar.png') }}" alt="Image" class="img-fluid rounded-circle mb-3">
+                                        <span class="d-block">
+                                            <span class="text-black">{{ $row->name ??'User' }}</span>
+                                        </span>
+                                    </p>
+                            </div>
+                        @endforeach
+
                     </div>
                 </div>
             </div>

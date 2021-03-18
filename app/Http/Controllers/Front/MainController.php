@@ -9,7 +9,8 @@
 
     class MainController extends Controller{
         public function index(){
-            return view('front.index');
+            $review = DB::table('review')->where('status' ,'active')->get();
+            return view('front.index')->with('review' ,$review);
         }
 
         public function about(){
