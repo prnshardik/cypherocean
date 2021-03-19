@@ -39,7 +39,19 @@
         }
 
         public function portfolio(){
-            return view('front.portfolio');
+            $path = URL('back/uploads/portfolio').'/';
+            $portfolio = DB::table('portfolio')
+                        ->select('portfolio.id', 'portfolio_categories.name AS cat_name',
+                            DB::Raw("CASE
+                                            WHEN ".'portfolio.image'." != '' THEN CONCAT("."'".$path."'".", ".'portfolio.image'.")
+                                            ELSE CONCAT("."'".$path."'".", 'default.png')
+                                        END as image")
+                        ,'portfolio.portfolio_category_id' ,'portfolio.name' ,'portfolio.description'
+                        )
+                        ->leftjoin('portfolio_categories', 'portfolio.portfolio_category_id' ,'portfolio_categories.id')
+                        ->where('portfolio.status' ,'active')
+                        ->get();
+            return view('front.portfolio')->with('portfolio' ,$portfolio);
         }
 
         public function contact_store(Request $request){

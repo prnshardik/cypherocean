@@ -80,7 +80,7 @@
                     </div>
                     <div class="ibox-body">
                         <div class="dataTables_wrapper container-fluid dt-bootstrap4">
-                            <table class="table table-bordered data-table" id="data-table">
+                            <table class="table table-responsive table-bordered data-table" id="data-table">
                                 <thead>
                                     <tr>
                                         <th>No</th>

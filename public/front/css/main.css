@@ -93,12 +93,12 @@ body {
     font-weight: 600; }
   .pp-gallery .card figure .h4,
   .pp-gallery .card figure p {
-    margin: 0; }
+    margin: -50px; }
   .pp-gallery .card figure p {
     letter-spacing: 1px;
     font-size: 60%; }
   .pp-gallery figure.pp-effect figcaption {
-    padding: 12px; }
+    padding: 70px; }
   .pp-gallery figure.pp-effect figcaption::before,
   .pp-gallery figure.pp-effect figcaption::after {
     position: absolute;

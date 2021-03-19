@@ -53,234 +53,27 @@
             <div class="row">
                 <div class="col-sm-12">
                     <a class="btn btn-primary pp-filter-button" href="#" data-filter="all">All</a>
-                    <a class="btn btn-outline-primary pp-filter-button" href="#" data-filter="people">B2B</a>
-                    <a class="btn btn-outline-primary pp-filter-button" href="#" data-filter="nature">Client</a>
+                    <a class="btn btn-outline-primary pp-filter-button" href="#" data-filter="1">B2B</a>
+                    <a class="btn btn-outline-primary pp-filter-button" href="#" data-filter="2">Client</a>
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="pp-gallery">
                 <div class="card-columns">
-                    <div class="card" data-groups="[&quot;nature&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/1-nature.jpg') }}" alt="Nature"/>
-                                <figcaption>
-                                    <div class="h4">Forest</div>
-                                    <p>Nature</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card" data-groups="[&quot;nature&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/2-nature.jpg') }}" alt="Nature"/>
-                                <figcaption>
-                                    <div class="h4">Bird</div>
-                                    <p>Nature</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card" data-groups="[&quot;nature&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/4-nature.jpg') }}" alt="Nature"/>
-                                <figcaption>
-                                    <div class="h4">Sunrise</div>
-                                    <p>Nature</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card" data-groups="[&quot;nature&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/5-nature.jpg') }}" alt="Nature"/>
-                                <figcaption>
-                                <div class="h4">Greenery</div>
-                                <p>Nature</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card" data-groups="[&quot;nature&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/8-nature.jpg') }}" alt="Nature"/>
-                                <figcaption>
-                                <div class="h4">Bird</div>
-                                <p>Nature</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card" data-groups="[&quot;nature&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/9-nature.jpg') }}" alt="Nature"/>
-                                <figcaption>
-                                    <div class="h4">Flower</div>
-                                    <p>Nature</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card" data-groups="[&quot;people&quot; , &quot;nature&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/10-people.jpg') }}" alt="People"/>
-                                <figcaption>
-                                    <div class="h4">Model</div>
-                                    <p>People</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card" data-groups="[&quot;people&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/11-people.jpg') }}" alt="People"/>
-                                <figcaption>
-                                    <div class="h4">Cute</div>
-                                    <p>People</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card" data-groups="[&quot;people&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/13-people.jpg') }}" alt="People"/>
-                                <figcaption>
-                                    <div class="h4">Model</div>
-                                    <p>People</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card" data-groups="[&quot;people&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/14-people.jpg') }}" alt="People"/>
-                                <figcaption>
-                                    <div class="h4">Model</div>
-                                    <p>People</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card" data-groups="[&quot;people&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/16-people.jpg') }}" alt="People"/>
-                                <figcaption>
-                                    <div class="h4">Model</div>
-                                    <p>People</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card" data-groups="[&quot;people&quot; , &quot;nature&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/17-people.jpg') }}" alt="People"/>
-                                <figcaption>
-                                    <div class="h4">Model</div>
-                                    <p>People</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card" data-groups="[&quot;computer&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/18-computer.jpg') }}" alt="Computer"/>
-                                <figcaption>
-                                    <div class="h4">Laptop</div>
-                                    <p>Computer</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card" data-groups="[&quot;computer&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/19-computer.jpg') }}" alt="Computer"/>
-                                <figcaption>
-                                    <div class="h4">Laptop</div>
-                                    <p>Computer</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card" data-groups="[&quot;computer&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/20-computer.jpg') }}" alt="Computer"/>
-                                <figcaption>
-                                    <div class="h4">Laptop</div>
-                                    <p>Computer</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card" data-groups="[&quot;computer&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/23-computer.jpg') }}" alt="Computer"/>
-                                <figcaption>
-                                    <div class="h4">Laptop</div>
-                                    <p>Computer</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card" data-groups="[&quot;computer&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/24-computer.jpg') }}" alt="Computer"/>
-                                <figcaption>
-                                    <div class="h4">Laptop</div>
-                                    <p>Computer</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card" data-groups="[&quot;food&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/26-food.jpg') }}" alt="Food"/>
-                                <figcaption>
-                                    <div class="h4">Fruit Salad</div>
-                                    <p>Food</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card" data-groups="[&quot;food&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/27-food.jpg') }}" alt="Food"/>
-                                <figcaption>
-                                    <div class="h4">Oranges</div>
-                                    <p>Food</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card" data-groups="[&quot;food&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/28-food.jpg') }}" alt="Food"/>
-                                <figcaption>
-                                    <div class="h4">Lemon Tea</div>
-                                    <p>Food</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card" data-groups="[&quot;food&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/29-food.jpg') }}" alt="Food"/>
-                                <figcaption>
-                                    <div class="h4">Pasta</div>
-                                    <p>Food</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
-                    <div class="card" data-groups="[&quot;food&quot;]">
-                        <a href="image-detail.html">
-                            <figure class="pp-effect"><img class="img-fluid" src="{{ asset('front/images/30-food.jpg') }}" alt="Food"/>
-                                <figcaption>
-                                <div class="h4">Burger</div>
-                                <p>Food</p>
-                                </figcaption>
-                            </figure>
-                        </a>
-                    </div>
+                    @foreach( $portfolio AS $row )
+                        <div class="card" data-groups="[&quot;{{ $row->portfolio_category_id }}&quot;]">
+                            <a href="image-detail.html">
+                                <figure class="pp-effect"><img class="img-fluid" src="{{  $row->image  }}" alt="Nature"/>
+                                    <figcaption>
+                                        <div class="h4">{{ $row->name }}</div>
+                                        <p>{{ $row->cat_name }}</p>
+                                    </figcaption>
+                                </figure>
+                            </a>
+                        </div>
+                    @endforeach
+                   
                 </div>
             </div>
         </div>

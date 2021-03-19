@@ -30,7 +30,7 @@
                     </div>
                     <div class="ibox-body">
                         <div class="dataTables_wrapper container-fluid dt-bootstrap4">
-                            <table class="table table-bordered data-table" id="data-table">
+                            <table class="table table-responsive table-bordered data-table" id="data-table">
                                 <thead>
                                     <tr>
                                         <th>No</th>
@@ -144,9 +144,9 @@
                     success: function (response){
                         if (response.code == 200){
                             datatable.ajax.reload();
-                            toastr.success('Record status changed successfully.', 'Success');
+                            toastr.success('Record Deleted Successfully.', 'Success');
                         }else{
-                            toastr.error('Failed to change status of record.', 'Error');
+                            toastr.error('Failed To Delete Record.', 'Error');
                         }
                     }
                 });

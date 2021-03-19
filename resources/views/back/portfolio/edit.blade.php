@@ -4,7 +4,7 @@
 @endsection
 
 @section('title')
-    Portfolio Create
+    Portfolio Edit
 @endsection
 
 @section('styles')
@@ -27,13 +27,14 @@
             <div class="col-md-12">
                 <div class="ibox">
                     <div class="ibox-head">
-                        <div class="ibox-title">Portfolio Create</div>
+                        <div class="ibox-title">Portfolio Edit</div>
                     </div>
                     <div class="ibox-body">
-                        <form action="{{ route('admin.portfolio.insert') }}" name="form" id="form" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.portfolio.update') }}" name="form" id="form" method="post" enctype="multipart/form-data">
                             @csrf
-                            @method('POST')
-
+                            @method('PATCH')
+                            <input type="hidden" name="id" value="{{ $portfolio->id }}">
+                            
                             <div class="row">
                                 <div class="form-group col-sm-6">
                                     <label for="portfolio_category_id">Portfolio Category</label>
@@ -41,7 +42,7 @@
                                         <option value="" hidden>Select Portfolio Category</option>
                                         @if(isset($portfolio_categories) && $portfolio_categories->isNotEmpty())
                                             @foreach($portfolio_categories AS $row)
-                                                <option value="{{ $row->id }}">{{ $row->name }}</option>
+                                                <option value="{{ $row->id }}" <?=(isset($portfolio) && $portfolio->cat_id == $row->id ? 'selected':'')?>>{{ $row->name }}</option>
                                             @endforeach
                                         @endif
                                     </select>
@@ -49,23 +50,23 @@
                                 </div>
                                 <div class="form-group col-sm-6">
                                     <label for="name">Name</label>
-                                    <input type="text" name="name" id="name" class="form-control" placeholder="Plese enter name" value="{{ @old('name') }}">
+                                    <input type="text" name="name" id="name" class="form-control" placeholder="Plese enter name" value="{{ $portfolio->name ??'' }}">
                                     <span class="kt-form__help error name"></span>
                                 </div>
                                 <div class="form-group col-sm-12">
                                     <label for="description">Description</label>
-                                    <textarea name="description" class="form-control" id="description" placeholder="Please enter description" rows="5" cols="10">{{ @old('description') }}</textarea>
+                                    <textarea name="description" class="form-control" id="description" placeholder="Please enter description" rows="5" cols="10">{{ $portfolio->description ??'' }}</textarea>
                                     <span class="kt-form__help error description"></span>
                                 </div>
                                 <div class="form-group col-sm-12">
                                     <label for="cover_image">Cover Image</label>
-                                    <input type="file" class="form-control dropify" id="cover_image" name="cover_image" data-allowed-file-extensions="jpg png jpeg" data-max-file-size-preview="2M">
+                                    <input type="file" class="form-control dropify" id="cover_image" name="cover_image" data-allowed-file-extensions="jpg png jpeg" data-default-file="{{ url('back/uploads/portfolio/' ,$portfolio->image) }}" data-max-file-size-preview="2M">
                                     <span class="kt-form__help error cover_image"></span>
                                 </div>
 
                                 <div class="form-group col-sm-12">
                                     <label for="other_image">Other Images</label>
-                                    <input type="file" class="form-control dropify" id="other_image" name="other_image[]" data-allowed-file-extensions="jpg png jpeg" data-max-file-size-preview="2M" multiple>
+                                    <input type="file" class="form-control dropify" id="other_image" name="other_image[]" data-allowed-file-extensions="jpg png jpeg" data-default-file="{{ url('back/uploads/portfolio/' ,$portfolio_images[0]->image) }}" data-max-file-size-preview="2M" multiple>
                                     <span class="kt-form__help error other_image"></span>
                                 </div>
                             </div>
