@@ -54,6 +54,21 @@
             return view('front.portfolio')->with('portfolio' ,$portfolio);
         }
 
+        public function portfolio_single(Request $request){
+            $id = $request->id;
+            $portfolio = DB::table('portfolio AS p')
+                            ->select('p.id' ,'p.image' ,'p.name' ,'p.image' ,'p.description' ,'pc.name AS cat_name')
+                            ->leftjoin('portfolio_categories AS pc' ,'p.portfolio_category_id' ,'pc.id')
+                            ->first();
+
+            $path = URL('back/uploads/portfolio').'/';
+            $portfolio_images = DB::table('portfolio_images')
+                                ->select('image')
+                                ->where('portfolio_id',$id)->get()->toArray();
+            
+            return view('front.portfolio_single')->with(['portfolio' => $portfolio ,'portfolio_images' => $portfolio_images]);
+        }
+
         public function contact_store(Request $request){
             if($request->ajax()){
                 $rules = [

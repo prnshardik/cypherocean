@@ -14,6 +14,7 @@ Route::group(['namespace' => 'Front'], function(){
     Route::post('contact_us', 'MainController@contact_us')->name('contact_us');
     Route::post('review-store','MainController@review_store')->name('review_store');
     Route::post('contact-store', 'MainController@contact_store')->name('contact_store');
+    Route::get("portfolio_single/{id?}", "MainController@portfolio_single")->name('portfolio_single');
 });
 
 Route::group(['middleware' => 'prevent-back-history', 'namespace' => 'Admin', 'as' => 'admin.', 'prefix' => 'admin'], function(){

@@ -366,7 +366,7 @@ section {
 }
 
 .sticky-wrapper .site-navbar .site-menu > li > a {
-  color: rgba(66, 66, 66, 0.8) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
 }
 
 .sticky-wrapper .site-navbar .site-menu > li > a:hover, .sticky-wrapper .site-navbar .site-menu > li > a.active {
@@ -785,7 +785,7 @@ section {
 
 .site-navbar .site-logo {
   position: relative;
-  font-size: 21px;
+  font-size: 24px;
 }
 
 .site-navbar .site-logo a {

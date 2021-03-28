@@ -11,7 +11,7 @@
 
     class PortfolioController extends Controller{
         public function index(Request $request){
-        	if($request->ajax()){
+            if($request->ajax()){
                 $data = DB::table('portfolio as p')
                             ->select('p.id', 'p.name', 'p.image', 'p.status', DB::Raw("SUBSTRING(".'p.description'.", 1, 50) as description"),  'pc.name as portfolio_category_name')
                             ->leftjoin('portfolio_categories as pc', 'pc.id', 'p.portfolio_category_id')
@@ -49,7 +49,7 @@
                         })
 
                         ->editColumn('image', function($data) {
-                        	$url = asset('back/uploads/portfolio/'.$data->image);
+                            $url = asset('back/uploads/portfolio/'.$data->image);
                             return '<img src="'.$url.'" border="0" width="40" class="img-rounded" align="center" />';
                         })
 
@@ -133,12 +133,13 @@
                     }
                     DB::commit();
                     return redirect()->route('admin.portfolio')->with('success', 'Portfolio inserted successfully.');
+            
                 }else{
                     DB::rollback();
                     return redirect()->back()->with('error', 'Failed to insert record in user.')->withInput();
                 }
             } catch (\Throwable $th) {
-                // dd('out');
+            
                 DB::rollback();
                 return redirect()->back()->with('error', 'Failed to insert record.')->withInput();
             }

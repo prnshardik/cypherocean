@@ -63,7 +63,7 @@
                 <div class="card-columns">
                     @foreach( $portfolio AS $row )
                         <div class="card" data-groups="[&quot;{{ $row->portfolio_category_id }}&quot;]">
-                            <a href="image-detail.html">
+                            <a href="{{ route('portfolio_single',$row->id) }}">
                                 <figure class="pp-effect"><img class="img-fluid" src="{{  $row->image  }}" alt="Nature"/>
                                     <figcaption>
                                         <div class="h4">{{ $row->name }}</div>
