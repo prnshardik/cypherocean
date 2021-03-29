@@ -43,14 +43,15 @@
             $portfolio = DB::table('portfolio')
                         ->select('portfolio.id', 'portfolio_categories.name AS cat_name',
                             DB::Raw("CASE
-                                            WHEN ".'portfolio.image'." != '' THEN CONCAT("."'".$path."'".", ".'portfolio.image'.")
-                                            ELSE CONCAT("."'".$path."'".", 'default.png')
-                                        END as image")
-                        ,'portfolio.portfolio_category_id' ,'portfolio.name' ,'portfolio.description'
+                                        WHEN ".'portfolio.image'." != '' THEN CONCAT("."'".$path."'".", ".'portfolio.image'.")
+                                        ELSE CONCAT("."'".$path."'".", 'default.png')
+                                END as image")
+                            ,'portfolio.portfolio_category_id' ,'portfolio.name' ,'portfolio.description'
                         )
                         ->leftjoin('portfolio_categories', 'portfolio.portfolio_category_id' ,'portfolio_categories.id')
                         ->where('portfolio.status' ,'active')
                         ->get();
+
             return view('front.portfolio')->with('portfolio' ,$portfolio);
         }
 
@@ -63,9 +64,14 @@
 
             $path = URL('back/uploads/portfolio').'/';
             $portfolio_images = DB::table('portfolio_images')
-                                ->select('image')
-                                ->where('portfolio_id',$id)->get()->toArray();
-            
+                                ->select('id', DB::Raw("CASE
+                                                            WHEN ".'image'." != '' THEN CONCAT("."'".$path."'".", ".'image'.")
+                                                            ELSE CONCAT("."'".$path."'".", 'default.png')
+                                                    END as image"))
+                                ->where('portfolio_id', $id)
+                                ->get()
+                                ->toArray();
+
             return view('front.portfolio_single')->with(['portfolio' => $portfolio ,'portfolio_images' => $portfolio_images]);
         }
 
@@ -114,7 +120,7 @@
 
             $data = DB::table('review')->insert($input);
             if($data)
-                return redirect()->back()->with('success', 'Your Review Submited Successfully'); 
+                return redirect()->back()->with('success', 'Your Review Submited Successfully');
             else
                 return redirect()->back()->with('error', 'Faild To Submit Your Review');
         }
