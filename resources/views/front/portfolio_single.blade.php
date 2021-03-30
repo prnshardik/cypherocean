@@ -89,7 +89,7 @@
                 <div class="col-md-4 sidebar">
                     <div class="sidebar-box">
                         <h3>About The Project</h3>
-                        <p>{{ $portfolio->description }}</p>
+                        <div>{!! html_entity_decode($portfolio->description)  !!}</div>
                     </div>
                 </div>
             </div>

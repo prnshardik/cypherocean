@@ -60,6 +60,7 @@
             $portfolio = DB::table('portfolio AS p')
                             ->select('p.id' ,'p.image' ,'p.name' ,'p.image' ,'p.description' ,'pc.name AS cat_name')
                             ->leftjoin('portfolio_categories AS pc' ,'p.portfolio_category_id' ,'pc.id')
+                            ->where('p.id', $id)
                             ->first();
 
             $path = URL('back/uploads/portfolio').'/';

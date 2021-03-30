@@ -53,8 +53,8 @@
             <div class="row">
                 <div class="col-sm-12">
                     <a class="btn btn-primary pp-filter-button" href="#" data-filter="all">All</a>
-                    <a class="btn btn-outline-primary pp-filter-button" href="#" data-filter="1">B2B</a>
-                    <a class="btn btn-outline-primary pp-filter-button" href="#" data-filter="2">Client</a>
+                    <a class="btn btn-outline-primary pp-filter-button" href="#" data-filter="B2B">B2B</a>
+                    <a class="btn btn-outline-primary pp-filter-button" href="#" data-filter="Client">Client</a>
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@
             <div class="pp-gallery">
                 <div class="card-columns">
                     @foreach( $portfolio AS $row )
-                        <div class="card" data-groups="[&quot;{{ $row->portfolio_category_id }}&quot;]">
+                        <div class="card" data-groups="[&quot;{{ $row->cat_name }}&quot;]">
                             <a href="{{ route('portfolio_single',$row->id) }}">
                                 <figure class="pp-effect"><img class="img-fluid" src="{{  $row->image  }}" alt="Nature"/>
                                     <figcaption>
