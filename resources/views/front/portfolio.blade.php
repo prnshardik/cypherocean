@@ -15,6 +15,12 @@
         <link rel="stylesheet" href="{{ asset('front/css/google_font3.css') }}"/>
     </noscript>
     <link href="{{ asset('front/css/main.css?ver=1.2.0')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('front/css/owl-carousel/owl.theme.default.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('front/css/owl-carousel/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('front/css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{ asset('front/css/nice-select/css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{ asset('front/css/style_new.css')}}">
+ 
 @endsection
 
 @section('hero')
@@ -48,38 +54,64 @@
 @endsection
 
 @section('content')
-    <section class="section pb-0">
+
+
+  <!--================ Start Portfolio Area =================-->
+    <section class="portfolio_area section-margin pb-0" id="portfolio">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12">
-                    <a class="btn btn-primary pp-filter-button" href="#" data-filter="all">All</a>
-                    <a class="btn btn-outline-primary pp-filter-button" href="#" data-filter="B2B">B2B</a>
-                    <a class="btn btn-outline-primary pp-filter-button" href="#" data-filter="Client">Client</a>
+                <div class="col-lg-12">
+                    <div class="main_title">
+                        <p class="top_text">Our Portfolio <span></span></p>
+                        <h2>Check Our Recent <br>
+                            Client Work </h2>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="pp-gallery">
-                <div class="card-columns">
-                    @foreach( $portfolio AS $row )
-                        <div class="card" data-groups="[&quot;{{ $row->cat_name }}&quot;]">
-                            <a href="{{ route('portfolio_single',$row->id) }}">
-                                <figure class="pp-effect"><img class="img-fluid" src="{{  $row->image  }}" alt="Nature"/>
-                                    <figcaption>
-                                        <div class="h4">{{ $row->name }}</div>
-                                        <p>{{ $row->cat_name }}</p>
-                                    </figcaption>
-                                </figure>
-                            </a>
+
+            <div class="filters portfolio-filter">
+                <ul>
+                    <li class="active" data-filter="*">all</li>
+                    <li data-filter=".B2B">B2B</li>
+                    <li data-filter=".Client"> Client</li>
+                </ul>
+            </div>
+
+            <div class="filters-content">
+                <div class="row portfolio-grid">
+                    <div class="grid-sizer col-md-3 col-lg-3"></div>
+                    @foreach($portfolio AS $row)
+                        <div class="col-lg-6 col-md-6 all {{$row->cat_name}}">
+                            <div class="single_portfolio">
+                                <img class="img-fluid w-100" src="{{ $row->image }}" alt="">
+                                <div class="overlay"></div>
+                                <div class="short_info">
+                                    <h4><a href="{{ route('portfolio_single',$row->id)}}">{{$row->name}}</a></h4>
+                                    <p>{{ $row->cat_name }}</p>
+                                </div>
+                            </div>
                         </div>
                     @endforeach
-                   
                 </div>
             </div>
         </div>
     </section>
+    <!--================ End Portfolio Area =================-->
+
 @endsection
     
 @section('scripts')
+
     <script src="{{ asset('front/scripts/main.js?ver=1.2.0') }}"></script>
+    <script src="{{ asset('front/js/popper.js') }}"></script>
+    <script src="{{ asset('front/js/bootstrap.min.js') }}" ></script>
+    <script src="{{ asset('front/js/stellar.js') }}" ></script>
+    <script src="{{ asset('front/js/isotope/imagesloaded.pkgd.min.js') }}"></script>
+    <script src="{{ asset('front/js/isotope/isotope-min.js') }}"></script>
+    <script src="{{ asset('front/js/owl-carousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ asset('front/js/jquery.ajaxchimp.min.js') }}"></script>
+    <script src="{{ asset('front/js/mail-script.js') }}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
+    <script src="{{ asset('front/js//gmaps.min.js') }}"></script>
+    <script src="{{ asset('front/js//theme.js') }}"></script>
 @endsection

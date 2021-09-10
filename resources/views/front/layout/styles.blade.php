@@ -14,6 +14,10 @@
 <link href="{{ asset('front/vendor/toastr/toastr.min.css') }}" rel="stylesheet" />
 
 <style>
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
+  filter: invert(1);
+}
 	@media only screen and (max-width:767px){
         form{
             margin:10px;    
