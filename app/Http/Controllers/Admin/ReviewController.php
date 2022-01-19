@@ -9,7 +9,7 @@
     class ReviewController extends Controller{
         public function index(Request $request){
         	if($request->ajax()){
-                $data = DB::table('review')->get();
+                $data = DB::table('review')->orderBy('id','desc')->get();
 
                 return Datatables::of($data)
                         ->addIndexColumn()
