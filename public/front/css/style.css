@@ -522,7 +522,7 @@ section {
   font-size: 15px;
   width: 100%;
   float: left;
-  background: #fff;
+  /* background: #fff; */
 }
 
 .sidebar-box *:last-child {
